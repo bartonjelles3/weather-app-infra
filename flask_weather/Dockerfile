@@ -1,5 +1,5 @@
 FROM python:3.11-slim
-RUN pip install flask
+RUN pip install flask gunicorn requests
 WORKDIR /weather
 COPY . .
 EXPOSE 8080

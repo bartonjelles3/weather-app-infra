@@ -4,9 +4,9 @@ from owm_key import API_KEY
 import flask
 import requests
 
-APP = flask.Flask(__name__)
+application = flask.Flask(__name__)
 
-@APP.route('/weather_query', methods=['POST'])
+@application.route('/weather_query', methods=['POST'])
 def weather_query():
     'Takes ZIP, queries OWM for latitude, longitude to request current temp in location.'
     req = flask.request.get_json()
@@ -29,4 +29,5 @@ def weather_query():
     return flask.jsonify({'temperature': temp})
 
 if __name__ == '__main__':
-    APP.run(debug=True, port=5001)
+    application.run(host="0.0.0.0", port=8081)
+
