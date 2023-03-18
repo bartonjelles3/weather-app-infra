@@ -16,7 +16,7 @@ def get_weather():
     'Gets the weather via an API call to a backend that queries OpenWeatherMap.'
     data = {'zip': flask.request.args.get('zip')}
     headers = {'Content-Type': 'application/json'}
-    response = requests.post("http://127.0.0.1:8081/weather_query",
+    response = requests.post("http://weather-query-service.default.svc.cluster.local/weather_query",
                               data=json.dumps(data), headers=headers)
     return flask.render_template('home.html',
                                   temperature=int(response.json()['temperature']))
