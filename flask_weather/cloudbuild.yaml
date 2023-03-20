@@ -1,4 +1,7 @@
 steps:
-- name: 'python:3.11'
-  entrypoint: python
-  args: ['-m', 'unittest']
+  - name: 'python:3.11'
+    entrypoint: python
+    args: ['-m', 'pip', 'install', 'Flask', 'requests']
+  - name: 'python:3.11'
+    entrypoint: python
+    args: ['-m', 'unittest']
