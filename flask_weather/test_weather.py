@@ -22,4 +22,4 @@ class WeatherAppTests(unittest.TestCase):
           self.assertEqual(weather.home(), _WEBPAGE)
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(failfast=True)
