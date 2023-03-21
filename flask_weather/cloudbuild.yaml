@@ -5,9 +5,11 @@ steps:
     args: 
       - '-c'
       - |
-        echo parent dir
+        echo "parent dir"
         ls -R ..
-        echo current dir
-        ls
+        echo "current dir"
+        ls -la
         pip install flask requests &&
-        python -m unittest
+        echo "Discovered test files:"
+        find . -name "test_*.py"
+        python -m unittest discover -s . -p 'test_*.py'
