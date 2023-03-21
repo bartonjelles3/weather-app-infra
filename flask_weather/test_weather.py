@@ -18,7 +18,7 @@ _WEBPAGE = """<!DOCTYPE html>
 
 class WeatherAppTests(unittest.TestCase):
     def test_home_rendered(self):
-        'test11'
+        'test12'
         with weather.application.app_context():
           self.assertNotEqual(weather.home(), _WEBPAGE)
 
