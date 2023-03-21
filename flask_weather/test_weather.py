@@ -18,9 +18,8 @@ _WEBPAGE = """<!DOCTYPE html>
 
 class WeatherAppTests(unittest.TestCase):
     def test_home_rendered(self):
-        'test12'
         with weather.application.app_context():
-          self.assertNotEqual(weather.home(), _WEBPAGE)
+          self.assertEqual(weather.home(), _WEBPAGE)
 
 if __name__ == '__main__':
     unittest.main(failfast=True)
