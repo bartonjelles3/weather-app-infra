@@ -1,6 +1,7 @@
 steps:
   - name: 'python:3.11'
     entrypoint: bash
+    dir: 'flask_weather'
     args: 
       - '-c'
       - |
