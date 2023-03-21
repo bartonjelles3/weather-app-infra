@@ -4,6 +4,6 @@ steps:
     args: 
       - '-c'
       - |
-        ls
+        ls -R ..
         pip install flask requests &&
         python -m unittest discover -s flask_weather/
