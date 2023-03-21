@@ -5,6 +5,9 @@ steps:
     args: 
       - '-c'
       - |
+        echo parent dir
         ls -R ..
+        echo current dir
+        ls
         pip install flask requests &&
-        python -m unittest discover -s flask_weather/
+        python -m unittest
