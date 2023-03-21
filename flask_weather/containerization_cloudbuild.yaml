@@ -1,6 +1,7 @@
 steps:
   # Build Docker image
   - name: 'gcr.io/cloud-builders/docker'
+    dir: 'flask_weather'
     args: ['build', '-t', 'us-central1-docker.pkg.dev/proven-verve-376422/weather-app/flask-weather', '.']
     timeout: '120s'
 
