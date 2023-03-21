@@ -1,7 +1,9 @@
 steps:
   - name: 'python:3.11'
-    entrypoint: python
-    args: ['-m', 'pip', 'install', 'Flask', 'requests']
-  - name: 'python:3.11'
-    entrypoint: python
-    args: ['-m', 'unittest']
+    entrypoint: bash
+    args: 
+      - '-c'
+      - |
+        ls
+        pip install flask requests &&
+        python -m unittest
