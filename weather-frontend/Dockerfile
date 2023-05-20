@@ -1,5 +1,5 @@
 FROM python:3.11-slim
-RUN pip install flask gunicorn requests
+RUN pip install flask gunicorn requests prometheus_client
 WORKDIR /weather
 COPY . .
 EXPOSE 8080

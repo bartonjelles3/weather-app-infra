@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: weather-query-svc
+  labels:
+    app: weather
+    app-tier: query
+spec:
+  type: NodePort
+  ports:
+  - port: 8081
+  selector:
+        app: weather
+        app-tier: query
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather-query-deployment
+  labels:
+    app: weather
+    app-tier: query
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+        app: weather
+        app-tier: query
+  template:
+    metadata:
+      labels:
+        app: weather
+        app-tier: query
+    spec:
+      containers:
+      - name: weather-query-container
+        image: bartonjelles3/weather-query:latest
+        ports:
+        - containerPort: 8081
