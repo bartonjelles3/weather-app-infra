@@ -2,15 +2,19 @@
 <html>
   <head>
     <title>Weather App</title>
+    <link rel="stylesheet" type="text/css" href="static/main.css">
   </head>
   <body>
     <h1>Weather App 1.1</h1>
     <form action="get_weather" method="get">
-      <input type="text" name="zip" placeholder="Enter ZIP code">
-      <button type="submit">Get Weather</button>
+      <input type="text" name="zip" placeholder="Enter ZIP code" class="input-field">
+      <button type="submit" class="btn">Get Weather</button>
     </form>
     {% if temperature %}
-      <p>The temperature is {{ temperature }} degrees Fahrenheit</p>
+      <p class="result-text">The temperature is {{ temperature }} degrees Fahrenheit</p>
     {% endif %}
+    {% if error_message %}
+      <p class="error-message">{{ error_message }}</p>
+     {% endif %}
   </body>
 </html>
