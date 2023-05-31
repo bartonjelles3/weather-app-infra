@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: weather-frontend-svc
+  namespace: weather-app
   labels:
     app: weather
     app-tier: frontend
@@ -17,6 +18,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: weather-frontend-deployment
+  namespace: weather-app
   labels:
     app: weather
     app-tier: frontend
@@ -37,3 +39,6 @@ spec:
         image: bartonjelles3/weather-frontend:latest
         ports:
         - containerPort: 8080
+        env:
+        - name: WEATHER_QUERY_ADDRESS
+          value: "http://weather-query-svc.weather-app.svc.cluster.local:8081/weather_query"

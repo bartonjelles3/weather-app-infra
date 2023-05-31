@@ -3,11 +3,15 @@ import requests
 import json
 import prometheus_client
 import logging
+import os
 
 application = flask.Flask(__name__)
 
 duration = prometheus_client.Summary('request_processing_seconds',
                                     'Time spent processing weather request')
+
+# Set http://localhost:8081/weather_query if running locally
+query_address = os.environ["WEATHER_QUERY_ADDRESS"]
 
 logging.basicConfig(level=logging.INFO)
 
@@ -22,10 +26,10 @@ def get_weather():
     'Gets the weather via an API call to a backend that queries OpenWeatherMap.'
     data = {'zip': flask.request.args.get('zip')}
     headers = {'Content-Type': 'application/json'}
-    logging.info(f'Sending request to http://weather-query-svc.default.svc.cluster.local:8081/weather_query')
+    logging.info(f'Sending request to {query_address}')
     
     try:
-        response = requests.post("http://weather-query-svc.default.svc.cluster.local:8081/weather_query",
+        response = requests.post(query_address,
                                  data=json.dumps(data), headers=headers)
         response.raise_for_status() 
         
