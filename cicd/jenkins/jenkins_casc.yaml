@@ -1,0 +1,5 @@
+jenkins:
+  securityRealm:
+    googleOAuth2:
+      clientId: "___.apps.googleusercontent.com"
+      clientSecret: "${GOOGLE_OAUTH_SECRET}"
