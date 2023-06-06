@@ -1,5 +1,5 @@
 apiVersion: v2
-name: cicd
+name: monitoring
 description: Monitoring Kubernetes resources for weather-app (eg. Prometheus)
 type: application
 version: 1.0

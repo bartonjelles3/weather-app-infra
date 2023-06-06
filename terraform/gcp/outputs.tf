@@ -17,3 +17,13 @@ output "kubernetes_cluster_host" {
   value       = google_container_cluster.primary.endpoint
   description = "GKE Cluster Host"
 }
+
+output "docker_repo_id" {
+  description = "Docker repo ID"
+  value       = google_artifact_registry_repository.docker-images.id
+}
+
+output "helm_repo_id" {
+  description = "Helm repo ID"
+  value       = google_artifact_registry_repository.helm-charts.id
+}

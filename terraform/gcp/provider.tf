@@ -31,10 +31,17 @@ provider "google" {
   access_token = data.google_service_account_access_token.default.access_token
 }
 
-provider "kubernetes" {
-  host  = "https://${data.google_container_cluster.primary.endpoint}"
-  token = provider.google.access_token
-  cluster_ca_certificate = base64decode(
-    data.google_container_cluster.my_cluster.master_auth[0].cluster_ca_certificate,
-  )
+provider "helm" {
+  kubernetes {
+    host                   = "https://${google_container_cluster.primary.endpoint}"
+    token                  = data.google_service_account_access_token.default.access_token
+    cluster_ca_certificate = base64decode(
+    resource.google_container_cluster.primary.master_auth[0].cluster_ca_certificate,
+    )
+  }
+  registry {
+    url      = "oci://us-west1-docker.pkg.dev/weather-app-388708/helm-charts"
+    username = "oauth2accesstoken"
+    password = data.google_service_account_access_token.default.access_token
+  }
 }
