@@ -16,22 +16,28 @@ resource "google_container_node_pool" "primary_nodes" {
   node_config {
     machine_type = "e2-small"
   }
+
 }
+# For cluster bootstrapping. Updates handled in CI/CD
 resource "helm_release" "cicd" {
-  name        = "cicd"
-  repository  = "oci://us-west1-docker.pkg.dev/weather-app-388708/helm-charts"
-  chart       = "cicd"  
-  version = "1.0"
+  name       = "cicd"
+  repository = "oci://us-west1-docker.pkg.dev/weather-app-388708/helm-charts"
+  chart      = "cicd"
+  version    = "1.0"
+  lifecycle {
+    ignore_changes = [
+      version,
+    ]
+  }
 }
 resource "helm_release" "monitoring" {
-  name        = "monitoring"
-  repository  = "oci://us-west1-docker.pkg.dev/weather-app-388708/helm-charts"
-  chart       = "monitoring"  
-  version = "1.0"
-}
-resource "helm_release" "weather-app" {
-  name        = "weather-app"
-  repository  = "oci://us-west1-docker.pkg.dev/weather-app-388708/helm-charts"
-  chart       = "weather-app"  
-  version = "1.0"
+  name       = "monitoring"
+  repository = "oci://us-west1-docker.pkg.dev/weather-app-388708/helm-charts"
+  chart      = "monitoring"
+  version    = "1.0"
+  lifecycle {
+    ignore_changes = [
+      version,
+    ]
+  }
 }
