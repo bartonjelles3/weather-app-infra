@@ -2,4 +2,4 @@ apiVersion: v2
 name: monitoring
 description: Monitoring Kubernetes resources for weather-app (eg. Prometheus)
 type: application
-version: 1.0
+version: "1.0"

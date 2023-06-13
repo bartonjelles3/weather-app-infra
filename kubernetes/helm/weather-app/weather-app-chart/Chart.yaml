@@ -2,4 +2,4 @@ apiVersion: v2
 name: weather-app
 description: App Kubernetes resources for weather-app (weather frontend and query)
 type: application
-version: 1.0
+version: "1.0"
