@@ -8,7 +8,7 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: 8080
+  - port: 80
   selector:
         app: weather
         app-tier: frontend
@@ -34,9 +34,9 @@ spec:
     spec:
       containers:
       - name: weather-frontend-container
-        image: bartonjelles3/weather-frontend:latest
+        image: us-west1-docker.pkg.dev/weather-app-391906/docker-images/weather-frontend:1.0
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         env:
         - name: WEATHER_QUERY_ADDRESS
-          value: "http://weather-query-svc.weather-app.svc.cluster.local:8081/weather_query"
+          value: "http://weather-query-svc.weather-app.svc.cluster.local/weather_query"

@@ -8,7 +8,7 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: 8081
+  - port: 80
   selector:
         app: weather
         app-tier: query
@@ -34,6 +34,6 @@ spec:
     spec:
       containers:
       - name: weather-query-container
-        image: bartonjelles3/weather-query:latest
+        image: us-west1-docker.pkg.dev/weather-app-391906/docker-images/weather-query:1.0
         ports:
-        - containerPort: 8081
+        - containerPort: 80
