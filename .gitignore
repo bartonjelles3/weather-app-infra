@@ -1,4 +1,3 @@
 weather-app.code-workspace
-__pycache__/
 .*
 !/.gitignore
