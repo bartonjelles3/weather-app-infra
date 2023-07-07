@@ -18,3 +18,11 @@ resource "google_container_node_pool" "primary_nodes" {
     machine_type = "e2-small"
   }
 }
+
+resource "helm_release" "argocd" {
+  name       = "argocd"
+  repository = "https://argoproj.github.io/argo-helm"
+  chart      = "argo-cd"
+  namespace  = "infra"
+  version    = "3.35.4"
+}

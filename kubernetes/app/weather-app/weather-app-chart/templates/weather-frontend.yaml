@@ -39,4 +39,4 @@ spec:
         - containerPort: 80
         env:
         - name: WEATHER_QUERY_ADDRESS
-          value: "http://weather-query-svc.weather-app.svc.cluster.local/weather_query"
+          value: "http://weather-query-svc/weather_query"
